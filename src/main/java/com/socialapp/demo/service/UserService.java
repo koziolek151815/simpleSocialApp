@@ -52,17 +52,6 @@ public class UserService implements UserDetailsService {
         return authorities;
     }
 
-    public List<User> findAll() {
-        List<User> list = new ArrayList<>();
-        userRepository.findAll().iterator().forEachRemaining(list::add);
-        return list;
-    }
-
-
-    public User findOne(String username) {
-        return userRepository.findByUsername(username);
-    }
-
     public User getCurrentUser() {
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();

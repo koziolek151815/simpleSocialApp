@@ -30,19 +30,31 @@ public class CommentService {
         this.userService = userService;
     }
 
-    public List<CommentResponseDto> getAllCommentsForPost(Long postId){
+    public List<CommentResponseDto> getAllCommentsForPost(Long postId) {
         Post post = postRepository.findById(postId).get();
-        return commentRepository.findAll()
+        return commentRepository.findCommentsByPostId(postId)
                 .stream()
                 .map(commentMapper::mapToCommentResponseDto)
                 .collect(toList());
     }
 
-    public CommentResponseDto createCommentForPost(CommentRequestDto commentRequestDto, Long postId){
+    public CommentResponseDto createCommentForPost(CommentRequestDto commentRequestDto, Long postId) {
 
         User user = userService.getCurrentUser();
         Post post = postRepository.findById(postId).get();
-        Comment comment = commentRepository.save(commentMapper.mapToComment(commentRequestDto,user,post));
+        Comment comment = commentRepository.save(commentMapper.mapToComment(commentRequestDto, user, post));
+        return commentMapper.mapToCommentResponseDto(comment);
+    }
+
+    public void deleteComment(Long id) {
+        commentRepository.deleteById(id);
+    }
+
+    public CommentResponseDto updateComment(CommentRequestDto commentRequestDto, Long id) {
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("No found such comment"));
+        comment.setText(commentRequestDto.getText());
+        commentRepository.save(comment);
+        //comment = commentRepository.save(commentMapper.mapToComment(commentRequestDto,comment.getUser(),comment.getPost()));
         return commentMapper.mapToCommentResponseDto(comment);
     }
 }

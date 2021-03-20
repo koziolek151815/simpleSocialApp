@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class CommentController {
     private final CommentService commentService;
 
@@ -24,5 +25,14 @@ public class CommentController {
     @PostMapping("/posts/{postId}/comments")
     CommentResponseDto createCommentForPost(@RequestBody CommentRequestDto commentRequestDto, @PathVariable Long postId) {
         return commentService.createCommentForPost(commentRequestDto,postId);
+    }
+
+    @PutMapping("/comments/{id}")
+    CommentResponseDto updatePost(@RequestBody CommentRequestDto commentRequestDto, @PathVariable Long id) {
+        return commentService.updateComment(commentRequestDto,id);
+    }
+    @DeleteMapping("/comments/{id}")
+    void deletePost(@PathVariable Long id) {
+        commentService.deleteComment(id);
     }
 }

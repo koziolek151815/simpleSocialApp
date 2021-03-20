@@ -26,4 +26,5 @@ public abstract class CommentMapper {
     @Mapping(target = "username", source = "comment.user.username")
     @Mapping(target = "postId", source = "comment.post.id")
     public abstract CommentResponseDto mapToCommentResponseDto(Comment comment);
+
 }

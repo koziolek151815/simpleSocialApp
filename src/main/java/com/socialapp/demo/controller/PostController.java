@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 class PostController {
 
     private final PostService postService;
@@ -27,7 +28,6 @@ class PostController {
         return postService.createPost(postRequestDto);
     }
 
-
     @GetMapping("/posts/{id}")
     PostResponseDto getPost(@PathVariable Long id) {
         return postService.getPost(id);
@@ -38,7 +38,6 @@ class PostController {
 
         return postService.updatePost(postRequestDto,id);
     }
-
     @DeleteMapping("/posts/{id}")
     void deletePost(@PathVariable Long id) {
         postService.deletePost(id);
