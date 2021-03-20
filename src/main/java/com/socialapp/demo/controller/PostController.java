@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-class PostController {
+public class PostController {
 
     private final PostService postService;
 
@@ -19,7 +19,7 @@ class PostController {
     }
 
     @GetMapping("/posts")
-    List<PostResponseDto> getAllPosts() {
+    public List<PostResponseDto> getAllPosts() {
         return postService.getAllPosts();
     }
 
@@ -29,7 +29,7 @@ class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    PostResponseDto getPost(@PathVariable Long id) {
+    public PostResponseDto getPost(@PathVariable Long id) {
         return postService.getPost(id);
     }
 

@@ -65,4 +65,8 @@ public class UserController {
         return "Any User Can Read This";
     }
 
+    @RequestMapping(value="/usernew", method = RequestMethod.GET)
+    public String userTest(){
+        return "Any User Can Read This";
+    }
 }
