@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class VotePostRequestDto {
     private Boolean isLike;
-    private Long postId;
+
 }

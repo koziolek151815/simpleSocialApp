@@ -14,7 +14,8 @@ public class VotePost {
     @Id
     @GeneratedValue
     private Long id;
-    private Boolean isLike;
+
+    private boolean isLike;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User user;

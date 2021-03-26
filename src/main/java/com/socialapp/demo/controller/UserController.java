@@ -52,7 +52,6 @@ public class UserController {
     }
 
 
-
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/adminping", method = RequestMethod.GET)
     public String adminPing(){

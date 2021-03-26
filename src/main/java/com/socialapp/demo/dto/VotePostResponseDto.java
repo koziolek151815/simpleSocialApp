@@ -12,5 +12,5 @@ public class VotePostResponseDto {
     private Boolean isLike;
     private Long postId;
     private String userName;
-    private Long userId;
+
 }
