@@ -8,6 +8,7 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -25,7 +26,7 @@ public class PostControllerTest {
     }
 public List<PostResponseDto> giveData(){
         List<PostResponseDto> postResponseDtoList= new ArrayList<>();
-        postResponseDtoList.add(new PostResponseDto((long) 1,"jd"));
+        postResponseDtoList.add(new PostResponseDto((long) 1,"jd", LocalDateTime.now(),"edzio"));
         return postResponseDtoList;
     }
 }

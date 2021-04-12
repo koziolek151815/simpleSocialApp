@@ -19,7 +19,10 @@ public abstract class PostMapper {
     @Mapping(target = "date",  expression = "java(LocalDateTime.now())")
     public abstract Post mapToPost(PostRequestDto postRequestDto, User user);
 
+    @Mapping(target = "username", source = "post.user.username")
     public abstract PostResponseDto mapToPostResponseDto(Post post);
+
+
 
 
 }

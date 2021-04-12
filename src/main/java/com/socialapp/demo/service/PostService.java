@@ -28,6 +28,7 @@ public class PostService {
         this.userService = userService;
     }
     public List<PostResponseDto> getAllPosts(){
+        User user = userService.getCurrentUser();
         return postRepository.findAll()
                 .stream()
                 .map(postMapper::mapToPostResponseDto)
@@ -36,6 +37,7 @@ public class PostService {
     }
 
     public PostResponseDto getPost(Long id){
+        User user = userService.getCurrentUser();
         return postMapper.mapToPostResponseDto(postRepository.findById(id).get());
     }
     public PostResponseDto createPost(PostRequestDto postRequestDto){

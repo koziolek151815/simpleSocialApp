@@ -28,7 +28,7 @@ public class CommentController {
     }
 
     @PutMapping("/comments/{id}")
-    CommentResponseDto updatePost(@RequestBody CommentRequestDto commentRequestDto, @PathVariable Long id) {
+    CommentResponseDto updateComment(@RequestBody CommentRequestDto commentRequestDto, @PathVariable Long id) {
         return commentService.updateComment(commentRequestDto,id);
     }
     @DeleteMapping("/comments/{id}")

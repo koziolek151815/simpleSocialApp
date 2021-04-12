@@ -54,7 +54,6 @@ public class CommentService {
         Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("No found such comment"));
         comment.setText(commentRequestDto.getText());
         commentRepository.save(comment);
-        //comment = commentRepository.save(commentMapper.mapToComment(commentRequestDto,comment.getUser(),comment.getPost()));
         return commentMapper.mapToCommentResponseDto(comment);
     }
 }
